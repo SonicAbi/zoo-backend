@@ -1,5 +1,3 @@
-
-
 export type AnimalType = {
   feedingcost: number;
   name: string;

@@ -2,7 +2,8 @@
   "name": "zoo-project",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@faker-js/faker": "^9.5.0",
@@ -15,6 +16,8 @@
   "devDependencies": {
     "@types/node": "^20.11.17",
     "@types/pg": "^8.11.11",
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.1",
+    "typescript": "^5.7.3",
+    "bun": "^1.2.2"
   }
 }

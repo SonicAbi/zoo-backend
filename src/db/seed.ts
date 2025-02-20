@@ -9,10 +9,11 @@ const ANIMAL_NUMBER = 56
 function generateAnimals(n: number): AnimalType[] {
   let animals: AnimalType[] = [];
   for (let i = 0; i < n; i++) {
+    const getRandomGender = () => (Math.random() < 0.5 ? "male" : "female");
       animals.push({
           name: fakerDE.animal.petName(),
         birthDate: fakerDE.date.birthdate().toISOString(),
-        gender: fakerDE.person.gender().toString(),
+        gender: getRandomGender(),
         species: fakerDE.animal.type(),
         feedingcost: faker.number.int(100)
     });
@@ -30,20 +31,21 @@ async function seed() {
     console.info("🔌 Connected to the Database.");
 
     // Generate subscribers
-    const animals = generateAnimals(56)
+    const animals = generateAnimals(ANIMAL_NUMBER)
 
     // Generate placeholders ($1, $2, ..., $N usw.)
     const values = animals.flatMap((s) => [s.name, s.birthDate, s.feedingcost, s.gender, s.species]);
     const placeholders = animals
       .map(
-        (_, i) => `($${i * 4 + 1}, $${i * 4 + 2}, $${i * 4 + 3}, $${i * 4 + 4})`
+        (_, i) =>
+          `($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${i * 5 + 5})`
       )
       .join(",");
     //@ * 4 because we have 4 values per subscriber and we need to skip to the next subscriber
 
     // Build the bulk insert query
     const query: QueryConfig = {
-      text: `INSERT INTO subscriber (name, last_name, email, phone) VALUES ${placeholders}`,
+      text: `INSERT INTO animal (name, birth_date, feeding_cost, gender, species) VALUES ${placeholders}`,
       values,
     };
 
