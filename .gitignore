@@ -1,4 +1,5 @@
 src/db/seed.ts
+src/db/create_table.ts
 # dev
 .yarn/
 !.yarn/releases
