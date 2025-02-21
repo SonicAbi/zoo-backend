@@ -6,7 +6,7 @@ export const enclosureRouter = new Hono();
 
 enclosureRouter.get("/", async (c) => {
   const result = EnclosureModel.findAll();
-  return c.json({ data: result }, 200);
+  return c.json({ data: result });
 });
 
 enclosureRouter.post("/", async (c) => {
