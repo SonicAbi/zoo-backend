@@ -1,4 +1,4 @@
-db/seed.ts
+src/db/seed.ts
 # dev
 .yarn/
 !.yarn/releases
