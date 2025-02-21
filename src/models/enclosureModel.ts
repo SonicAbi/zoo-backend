@@ -18,7 +18,7 @@ export class EnclosureModel {
     };
     try {
       getPool().query(query);
-      return "Enclosure successfully added." 
+      return "Enclosure successfully added.";
     } catch (error) {
       return error;
     }
@@ -30,11 +30,11 @@ export class EnclosureModel {
       text: "DELETE FROM enclosure WHERE id = $1",
       values: [id],
     };
-      try {
-          getPool().query(query)
-          return "Enclosure successfully deleted."
-      } catch (error) {
-          return error
-      }
+    try {
+      getPool().query(query);
+      return "Enclosure successfully deleted.";
+    } catch (error) {
+      return error;
+    }
   }
 }

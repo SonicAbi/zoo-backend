@@ -1,3 +1,4 @@
+db/seed.ts
 # dev
 .yarn/
 !.yarn/releases
@@ -26,5 +27,4 @@ lerna-debug.log*
 
 # misc
 .DS_Store
-src/db/
 dist/

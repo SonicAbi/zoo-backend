@@ -11,7 +11,6 @@ export function getClient() {
     return client;
   }
   client = new pg.Client({
-    
     ssl: {
       rejectUnauthorized: false,
     },
