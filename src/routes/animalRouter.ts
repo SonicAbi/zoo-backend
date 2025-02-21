@@ -4,18 +4,19 @@ import type { AnimalType } from "../types.js";
 
 export const animalRouter = new Hono()
 
-animalRouter.get('/', async (c) => {
-    try {
-        const allAnimals = await AnimalModel.findAll()
-        return c.json({
-            data: allAnimals
-        }, 200)
-    } catch (error) {
-        console.error(error)
-        return c.json({ error: error }, 400);
-    }
+animalRouter.get("/", async (c) => {
+  try {
+    const allAnimals = await AnimalModel.findAll();
 
-})
+    // Stelle sicher, dass die Daten im richtigen Format sind
+    return c.json({ data: allAnimals }, 200);
+  } catch (error) {
+    console.error("❌ Error fetching animals:", error);
+
+    return c.json({ error: "Failed to fetch animals" }, 500);
+  }
+});
+
 
 animalRouter.post('/', async (c) => {
     try {
