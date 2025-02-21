@@ -66,6 +66,20 @@ async function seed() {
     // Execute the query
     await db.query(query);
 
+    const staff = generateStaff(STAFF_NUMBER)
+
+    const staffValues = staff.flatMap((s) => [s.name, s.role, s.salary])
+    const staffPlaceholders = staff.map(
+      (_, i) =>
+        `($${i * 3 + 1}, $${i * 3 + 2}, $${i * 3 + 3})`
+    ).join(",");
+
+    const staffQuery: QueryConfig = {
+      text: `INSERT INTO staff (name, role, salary) VALUES ${placeholders}`,
+      values: staffValues
+    };
+    await db.query(staffQuery)
+
     // const newsPlaceholders = news
     //   .map(
     //     (_, i) =>
