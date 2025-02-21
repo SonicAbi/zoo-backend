@@ -5,8 +5,8 @@ import type { AnimalType } from "../types.js";
 export const animalRouter = new Hono()
 
 animalRouter.get('/', async (c) => {
-    const allAnimals = await AnimalModel.findAll()
     try {
+        const allAnimals = await AnimalModel.findAll()
         return c.json({
             data: allAnimals
         }, 200)
