@@ -1,7 +1,7 @@
 import { faker, fakerDE } from "@faker-js/faker";
 import { getClient } from "./db.js";
 import type { QueryConfig } from "pg";
-import type { AnimalType } from "../types.js";
+import { Role, type AnimalType, type StaffType } from "../types.js";
 
 
 const ANIMAL_NUMBER = 56
@@ -19,6 +19,18 @@ function generateAnimals(n: number): AnimalType[] {
     });
   }
   return animals;
+}
+
+function generateStaff(n: number): StaffType[] {
+  let staff: StaffType[] = [];
+  for (let i = 0; i < n; i++) {
+      staff.push({
+        name: fakerDE.person.fullName(),
+        role: faker.helpers.arrayElement(Object.values(Role)),
+        salary: faker.number.int({min: 1300, max: 5000})
+    });
+  }
+  return staff;
 }
 
 
@@ -52,15 +64,6 @@ async function seed() {
     // Execute the query
     await db.query(query);
 
-    // Now, let's seed the newsletter table
-    // const news = generateNewsletter();
-    // const newsValues = news.flatMap((n) => [
-    //   n.author,
-    //   n.category,
-    //   n.content,
-    //   n.created_at,
-    //   n.updated_at,
-    // ]);
     // const newsPlaceholders = news
     //   .map(
     //     (_, i) =>

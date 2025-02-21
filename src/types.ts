@@ -13,3 +13,16 @@ export type EnclosureType = {
   cost: number;
   size: number;
 }
+
+export type StaffType = {
+  name: string,
+  role: string | Role,
+  salary: number
+}
+
+export enum Role {
+  'zookeeper',
+  'veterinarian',
+  'seller',
+  'regular'
+}
