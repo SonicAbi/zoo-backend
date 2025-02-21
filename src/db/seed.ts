@@ -5,6 +5,8 @@ import { Role, type AnimalType, type StaffType } from "../types.js";
 
 
 const ANIMAL_NUMBER = 56
+const STAFF_NUMBER = 34
+const ENCLOSURE_NUMBER = 8
 
 function generateAnimals(n: number): AnimalType[] {
   let animals: AnimalType[] = [];
