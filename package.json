@@ -8,16 +8,18 @@
   "dependencies": {
     "@faker-js/faker": "^9.5.0",
     "@hono/node-server": "^1.13.8",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "hono": "^4.7.1",
     "pg": "^8.13.3",
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/node": "^20.11.17",
     "@types/pg": "^8.11.11",
+    "bun": "^1.2.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.7.3",
-    "bun": "^1.2.2"
+    "typescript": "^5.7.3"
   }
 }
